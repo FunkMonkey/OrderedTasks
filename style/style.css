@@ -1,0 +1,30 @@
+body
+{
+}
+
+a
+{
+	color: #40abfe;
+}
+
+#tasks li[finished]
+{
+	text-decoration: line-through;
+}
+
+#newTaskDialog
+{
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	display: none;
+	padding: 1em;
+	border: 1px solid #000;
+	background-color: #fff;
+}
+
+#newTask_Name
+{
+	width: 25em;
+	margin-bottom: 0.5em;
+}

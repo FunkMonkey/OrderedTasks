@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ordered Tasks</title>
+        
+        <link rel="stylesheet"  href="style/style.css" />
+        
+        <script type="text/javascript" src="scripts/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="scripts/FileIO.js"></script>
+		<script type="text/javascript" src="data.json"></script>
+		<script type="text/javascript" src="scripts/Task.js"></script>
+        <script type="text/javascript" src="scripts/TaskManager.js"></script>
+        
+    </head>
+    
+    <body>
+		<div id="newTaskDialog">
+			<input id="newTask_Name" type="text" />
+			<br />
+			<input id="newTask_Create" type="button" value="Create" onclick="TaskManager.createNewTask(); "/>
+		</div>
+		<div id="tools">
+			<input id="newTask" type="button" value="New Task" onclick="TaskManager.showNewTaskDialog(null);" />
+		</div>
+        <div id="tasks">
+        </div>
+		<div id="calendar">
+			
+		</div>
+    </body>
+
+</html>
