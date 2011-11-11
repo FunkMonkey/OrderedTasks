@@ -12,6 +12,7 @@ var TaskManager = {
 		this.$tasks = $("#tasks");
 		
 		this.rootTask = new Task("root");
+		this.unsaved = false;
 		
 	},
 	
@@ -91,6 +92,8 @@ var TaskManager = {
 		var data = "var data = " + JSON.stringify(this.getSavableData());
 		
 		FileIO.saveFile(dataJSON.path, data);
+		
+		this.unsaved = false;
 	},
 	
 	showNewTaskDialog: function showNewTaskDialog(parentTask)
@@ -112,6 +115,7 @@ var TaskManager = {
 		this.newTaskParent.addSubTask(new Task($("#newTask_Name").val()))
 		this.hideNewTaskDialog();
 		this.refresh();
+		this.unsaved = true;
 	},
 	
 	
@@ -125,8 +129,12 @@ function onReady()
 	//TaskManager.save();
 	if(typeof(data) !== "undefined")
 		TaskManager.loadFromData(data);
-	
-	
 }
 
 $("window").ready(onReady);
+
+window.onbeforeunload = function onbeforeunload()
+{
+	if(TaskManager.unsaved)
+		return "There is unsaved data. Do yo really want to leave?";
+}
