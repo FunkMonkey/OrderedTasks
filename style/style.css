@@ -10,6 +10,7 @@ a
 #tasks li[finished]
 {
 	text-decoration: line-through;
+	margin-left: 2em;
 }
 
 #newTaskDialog
@@ -27,4 +28,10 @@ a
 {
 	width: 25em;
 	margin-bottom: 0.5em;
+}
+
+#taskTools
+{
+	position: absolute;
+	display: none;
 }

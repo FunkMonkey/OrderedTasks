@@ -28,15 +28,39 @@ var TaskManager = {
 		}
 	},
 	
+	/**
+	 * Called when hovering over a list-item
+	 * 
+	 * @param   {DOMEvent}   event   
+	 */
+	onListItemHover: function onListItemHover(event)
+	{
+		event.stopPropagation();
+		
+		var coords = $(event.target).offset();
+		coords.left -= 20;
+		this.showTaskTools(coords);
+	},
+	
+	/**
+	 * Shows the task-tools-box
+	 */
+	showTaskTools: function showTaskTools(coords)
+	{
+		$("#taskTools").show();
+		$("#taskTools").offset(coords);
+	}, 
+	
 	
 	createSubTaskList: function createSubTaskList($parent, task, level)
 	{
 		var $LI = $(document.createElement("li"));
 		$LI.text(task.name);
+		$LI.mouseenter(this.onListItemHover.bind(this));
 		$LI[0].task = task;
 		if(task.finished)
 			$LI.attr("finished", task.finished);
-		
+			
 		$parent.append($LI);
 		
 		if(task.subTasks.length !== 0)
